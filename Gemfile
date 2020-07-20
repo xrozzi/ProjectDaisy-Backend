@@ -45,3 +45,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rack-cors'
+
+gem "faker", "~> 2.13"
+
+gem "bcrypt", "~> 3.1"
+
+gem "knock", "~> 2.1"
