@@ -1,0 +1,2 @@
+class GitCollaboration < ApplicationRecord
+end
