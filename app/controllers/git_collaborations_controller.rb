@@ -1,4 +1,5 @@
 class GitCollaborationsController < ApplicationController
+  before_action :authenticate_user
   before_action :set_git_collaboration, only: [:show, :update, :destroy]
 
   # GET /git_collaborations
