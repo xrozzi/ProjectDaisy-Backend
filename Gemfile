@@ -44,9 +44,10 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-<<<<<<< HEAD
+gem 'rack-cors'
 
-gem 'rack-cors'
-=======
-gem 'rack-cors'
->>>>>>> a14c0090ce2fcbd364ef36bbdc5233cb3c29bbc1
+gem "faker", "~> 2.13"
+
+gem "bcrypt", "~> 3.1"
+
+gem "knock", "~> 2.1"
