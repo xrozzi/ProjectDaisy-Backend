@@ -51,3 +51,5 @@ gem "faker", "~> 2.13"
 gem "bcrypt", "~> 3.1"
 
 gem "knock", "~> 2.1"
+
+gem "cloudinary", "~> 1.16"
