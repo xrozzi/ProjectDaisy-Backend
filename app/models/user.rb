@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    Rails.application.routes.url_helpers
+    
     has_secure_password
     has_many :git_collaborations
     has_one_attached :image
