@@ -1,8 +1,10 @@
 class User < ApplicationRecord
     Rails.application.routes.url_helpers
-    
+
     has_secure_password
     has_many :git_collaborations
+    has_many :messages
+    has_many :conversations
     has_one_attached :image
 
     def to_token_payload
