@@ -7,3 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user = User.create(:email => 'admin@projectdaisy.com.au', :password => 'secretpassword')
+
+# forum type in user email
+# create a conversation, once conversation created then messages can be sent 
