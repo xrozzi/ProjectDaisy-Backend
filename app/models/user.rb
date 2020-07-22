@@ -4,7 +4,8 @@ class User < ApplicationRecord
     has_secure_password
     has_many :git_collaborations
     has_many :messages
-    has_many :conversations
+    has_many :users_conversations
+    has_many :conversations, through: :users_conversations
     has_one_attached :image
 
     def to_token_payload

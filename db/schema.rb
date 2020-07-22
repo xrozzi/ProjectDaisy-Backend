@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_22_043026) do
+ActiveRecord::Schema.define(version: 2020_07_22_055411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "conversations", force: :cascade do |t|
-    t.string "subject"
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(version: 2020_07_22_043026) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.text "msg_content"
     t.bigint "user_id"
     t.bigint "conversation_id"
+    t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
@@ -48,7 +48,18 @@ ActiveRecord::Schema.define(version: 2020_07_22_043026) do
     t.string "user"
   end
 
+  create_table "users_conversations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "conversation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_users_conversations_on_conversation_id"
+    t.index ["user_id"], name: "index_users_conversations_on_user_id"
+  end
+
   add_foreign_key "git_collaborations", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
+  add_foreign_key "users_conversations", "conversations"
+  add_foreign_key "users_conversations", "users"
 end

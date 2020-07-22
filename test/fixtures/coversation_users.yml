@@ -1,11 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
-  conversation: one
-  text: MyText
+  users: one
+  conversations: one
 
 two:
-  user: two
-  conversation: two
-  text: MyText
+  users: two
+  conversations: two

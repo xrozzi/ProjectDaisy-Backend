@@ -3,9 +3,7 @@
 one:
   user: one
   conversation: one
-  text: MyText
 
 two:
   user: two
   conversation: two
-  text: MyText
