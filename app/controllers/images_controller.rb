@@ -10,7 +10,7 @@ class ImagesController < ApplicationController
 
     # PATCH - updates an existing image
     def update
-        
+
         if @image.update(image: image["url"])
             render json: @image
           else
@@ -21,7 +21,7 @@ class ImagesController < ApplicationController
 
     # DELETE - deletes an image
     def destroy
-        @image.Cloudinary::Uploader.destroy(id)
+        @image.Cloudinary::Uploader.destroy(:id)
         @image.destroy
     end
 

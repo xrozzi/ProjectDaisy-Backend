@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.create(:email => 'admin@projectdaisy.com.au', :password => 'secretpassword')
+user = User.create(:email => 'admin@projectdaisy.com.au', :password => 'secretpassword', :firstname => 'Daisy', :lastname => 'Williams')
 
 # forum type in user email
 # create a conversation, once conversation created then messages can be sent 
