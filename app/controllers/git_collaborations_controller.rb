@@ -1,5 +1,6 @@
 class GitCollaborationsController < ApplicationController
   before_action :authenticate_user
+  before_action :set_user_id_param, only: [:create, :update]
   before_action :set_git_collaboration, only: [:show, :update, :destroy]
 
   # GET /git_collaborations
@@ -48,5 +49,9 @@ class GitCollaborationsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def git_collaboration_params
       params.require(:git_collaboration).permit(:title, :description, :user_id)
+    end
+
+    def set_user_id_param
+      params[:git_collaboration][:user_id] = current_user.id
     end
 end
