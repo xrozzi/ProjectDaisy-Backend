@@ -5,17 +5,24 @@ class ImagesController < ApplicationController
     def create 
         upload = Cloudinary::Uploader.upload(params[:image])
         image = Image.create(image: image["url"])
-        render json: item
+        render json: image
     end
 
     # PATCH - updates an existing image
     def update
+        
+        if @image.update(image: image["url"])
+            render json: @image
+          else
+            render json: @image.errors, status: :unprocessable_entity
+          end
 
     end
 
     # DELETE - deletes an image
     def destroy
         @image.Cloudinary::Uploader.destroy(id)
+        @image.destroy
     end
 
     private
