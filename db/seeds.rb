@@ -10,6 +10,11 @@
 # create a conversation, once conversation created then messages can be sent 
 
 
+User.create(:email => 'admin@projectdaisy.com.au', :password => 'secretpassword')
+User.create(:email => 'admin1@projectdaisy.com.au', :password => 'secretpassword')
+
+
+
 categories = [
   { name: "Ruby"},
   { name: "Python"},
@@ -27,22 +32,17 @@ categories.each do |category|
     Category.create(category)
   end
 
-# user1 = User.create(username: "trollerz", email: "lolerskatez@me.com", password: "iLoVeC4Mp1nG")
-
-
-# post1 = user3.forums.build(title: "Coding is funnn", discussion: "wondering if anyone feels the same?", category: 5, user_id: 1)
-# post1.save
 
 
 
+Forum.create(:title => "Category 5 post", discussion: "hihihi", user_id: 1, category_id: 5)
+Forum.create(:title => "Category 2 post", discussion: "hihihi", user_id: 2, category_id: 2)
+Forum.create(:title => "Category 9 post", discussion: "hellooooooooo", user_id: 2, category_id: 9)
+Forum.create(:title => "Category 9 post", discussion: "helllooooo", user_id: 2, category_id: 9)
 
-Forum.create(:title => "hellooooo", discussion: "hihihi", user_id: 1, category_id: 5)
-Forum.create(:title => "AMA", discussion: "Hi my name is Grimes, I am elons musks gf, ask me anything", user_id: 2, category_id: 9)
-
-Forum.create(:title => "AMA", discussion: "Hi my name is Grimes, I am elons musks gf, ask me anything", user_id: 2, category_id: 9)
-
-
-Comment.create(:body => "yeahhh i know so cool, y did you date him", user_id: 2, forum_id: 1)
+Comment.create(:body => "yeahhh i know so cool,", user_id: 1, forum_id: 9)
+Comment.create(:body => "yeahhh i know so cool,", user_id: 2, forum_id: 9)
+Comment.create(:body => "yeahhh i know so cool,", user_id: 1, forum_id: 2)
 
 
 
