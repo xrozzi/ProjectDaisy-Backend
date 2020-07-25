@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :forums
+  resources :comments
   resources :categories
   resources :messages
   resources :conversations

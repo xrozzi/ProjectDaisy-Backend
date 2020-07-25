@@ -10,15 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_23_013229) do
+ActiveRecord::Schema.define(version: 2020_07_25_091109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "conversations", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "forums", force: :cascade do |t|
+    t.string "title"
+    t.bigint "comment_id"
+    t.bigint "user_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_forums_on_category_id"
+    t.index ["comment_id"], name: "index_forums_on_comment_id"
+    t.index ["user_id"], name: "index_forums_on_user_id"
   end
 
   create_table "git_collaborations", force: :cascade do |t|
@@ -28,14 +54,6 @@ ActiveRecord::Schema.define(version: 2020_07_23_013229) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_git_collaborations_on_user_id"
-  end
-
-  create_table "images", force: :cascade do |t|
-    t.string "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_images_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -67,8 +85,11 @@ ActiveRecord::Schema.define(version: 2020_07_23_013229) do
     t.index ["user_id"], name: "index_users_conversations_on_user_id"
   end
 
+  add_foreign_key "comments", "users"
+  add_foreign_key "forums", "categories"
+  add_foreign_key "forums", "comments"
+  add_foreign_key "forums", "users"
   add_foreign_key "git_collaborations", "users"
-  add_foreign_key "images", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "users_conversations", "conversations"
