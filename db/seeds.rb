@@ -8,6 +8,8 @@
 
 user = User.create(:email => 'admin@projectdaisy.com.au', :password => 'secretpassword')
 
+
+user4= User.create(:email => 'admin4@projectdaisy.com.au', :password => 'secretpassword')
 # forum type in user email
 # create a conversation, once conversation created then messages can be sent 
 
@@ -28,3 +30,11 @@ categories = [
 categories.each do |category|
     Category.create(category)
   end
+
+
+comment.create(:body => "ok this is a comment")
+Forum.create(:title => "This is a title", :user => 1, category: => 9, :comment => 1)
+
+
+
+
