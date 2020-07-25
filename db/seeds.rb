@@ -10,3 +10,21 @@ user = User.create(:email => 'admin@projectdaisy.com.au', :password => 'secretpa
 
 # forum type in user email
 # create a conversation, once conversation created then messages can be sent 
+
+
+categories = [
+  { name: "Ruby"},
+  { name: "Python"},
+  { name: "JavaScript"},  
+  { name: "HTML/CSS"},
+  { name: "C++"},
+  { name: "React/MERN"},
+  { name: "Workplace Advice"},
+  { name: "Career Progression"},
+  { name: "For Fun/AmA"},
+  { name: "Show off your work"},
+]
+
+categories.each do |category|
+    Category.create(category)
+  end
