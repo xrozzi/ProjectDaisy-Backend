@@ -6,10 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.create(:email => 'admin@projectdaisy.com.au', :password => 'secretpassword')
-
-
-user4= User.create(:email => 'admin4@projectdaisy.com.au', :password => 'secretpassword')
 # forum type in user email
 # create a conversation, once conversation created then messages can be sent 
 
@@ -31,7 +27,22 @@ categories.each do |category|
     Category.create(category)
   end
 
-Forum.create(:title => "This is a title", user: 1, category: 5, comment: 1)
+# user1 = User.create(username: "trollerz", email: "lolerskatez@me.com", password: "iLoVeC4Mp1nG")
+
+
+# post1 = user3.forums.build(title: "Coding is funnn", discussion: "wondering if anyone feels the same?", category: 5, user_id: 1)
+# post1.save
+
+
+
+
+Forum.create(:title => "hellooooo", discussion: "hihihi", user_id: 1, category_id: 5)
+Forum.create(:title => "AMA", discussion: "Hi my name is Grimes, I am elons musks gf, ask me anything", user_id: 2, category_id: 9)
+
+Forum.create(:title => "AMA", discussion: "Hi my name is Grimes, I am elons musks gf, ask me anything", user_id: 2, category_id: 9)
+
+
+Comment.create(:body => "yeahhh i know so cool, y did you date him", user_id: 2, forum_id: 1)
 
 
 

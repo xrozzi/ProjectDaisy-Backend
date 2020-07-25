@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_25_141841) do
+ActiveRecord::Schema.define(version: 2020_07_25_144430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2020_07_25_141841) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "forum_id"
+    t.index ["forum_id"], name: "index_comments_on_forum_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -84,6 +86,7 @@ ActiveRecord::Schema.define(version: 2020_07_25_141841) do
     t.index ["user_id"], name: "index_users_conversations_on_user_id"
   end
 
+  add_foreign_key "comments", "forums"
   add_foreign_key "comments", "users"
   add_foreign_key "forums", "categories"
   add_foreign_key "forums", "users"
