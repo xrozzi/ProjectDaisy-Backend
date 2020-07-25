@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   resources :messages
   resources :conversations
   post 'user_token' => 'user_token#create'
