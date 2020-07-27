@@ -57,6 +57,14 @@ ActiveRecord::Schema.define(version: 2020_07_25_144430) do
     t.index ["user_id"], name: "index_git_collaborations_on_user_id"
   end
 
+  create_table "images", force: :cascade do |t|
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_images_on_user_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "conversation_id"
@@ -91,6 +99,7 @@ ActiveRecord::Schema.define(version: 2020_07_25_144430) do
   add_foreign_key "forums", "categories"
   add_foreign_key "forums", "users"
   add_foreign_key "git_collaborations", "users"
+  add_foreign_key "images", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "users_conversations", "conversations"

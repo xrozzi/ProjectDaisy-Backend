@@ -23,11 +23,6 @@ class User < ApplicationRecord
         }
     end
 
-    def get_image_url
-        url_for(self.image)
-    end
-
-    validates :image, {presence: true}
 end
 
 

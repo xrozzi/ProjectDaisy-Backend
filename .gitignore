@@ -27,4 +27,4 @@
 /config/master.key
 
 #Ignore Cloudinary credentials
-/config/cloudinary.yml
+config/initializers/cloudinary.rb
