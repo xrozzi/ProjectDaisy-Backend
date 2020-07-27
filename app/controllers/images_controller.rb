@@ -1,10 +1,12 @@
 class ImagesController < ApplicationController
+    
     before_action :set_image, only: [:update, :destroy]
 
     # PUT - create an image
     def create 
         upload = Cloudinary::Uploader.upload(params[:image])
-        image = Image.create(image: image["url"])
+        image = Image.create(image: upload["url"], user_id: current_user["id"])
+        puts current_user
         render json: image
     end
 

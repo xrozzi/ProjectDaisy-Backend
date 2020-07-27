@@ -47,6 +47,10 @@ class GitCollaborationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def git_collaboration_params
-      params.require(:git_collaboration).permit(:title, :description)
+      params.require(:git_collaboration).permit(:title, :description, :user_id)
+    end
+
+    def set_user_id_param
+      params[:git_collaboration][:user_id] = current_user.id
     end
 end
