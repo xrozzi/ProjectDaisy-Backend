@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
 
   # GET /messages
   def index
-    @messages = Message.all
+    @messages = Conversation.find(params[:conversation_id]).messages
 
     render json: @messages
   end
