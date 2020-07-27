@@ -3,7 +3,7 @@ class ConversationsController < ApplicationController
 
   # GET /conversations
   def index
-    @conversations = Conversation.all
+    @conversations = current_user.conversations 
 
     render json: @conversations
   end
