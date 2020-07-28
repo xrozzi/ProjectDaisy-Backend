@@ -13,8 +13,6 @@ class User < ApplicationRecord
     has_many :users_conversations
     has_many :conversations, through: :users_conversations
     has_one_attached :image
-    has_many :forums
-    has_many :comments, :dependent => :destroy
 
     def to_token_payload
         {
@@ -23,11 +21,6 @@ class User < ApplicationRecord
         }
     end
 
-    def get_image_url
-        url_for(self.image)
-    end
-
-    validates :image, {presence: true}
 end
 
 
