@@ -19,4 +19,3 @@ User.create(:email => 'admin1@projectdaisy.com.au', :password => 'secretpassword
 
 
 
-
