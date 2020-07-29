@@ -10,7 +10,16 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    begin
+      if @user.image
+        render json: @user.as_json.merge(image: Image.find_by_user_id(@user.id).image)
+      end
+    rescue
     render json: @user
+    
+    end
+    
+    # render json: @user
   end
 
   # POST /users
@@ -36,6 +45,16 @@ class UsersController < ApplicationController
   # DELETE /users/1
   def destroy
     @user.destroy
+  end
+
+  def methodlol
+    begin
+      if current_user.image
+        render json: current_user.as_json.merge(image: Image.find_by_user_id(current_user.id).image)
+      end
+    rescue
+      render json: current_user
+    end
   end
 
   private

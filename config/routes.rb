@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
   resources :images, only: [:create, :update, :destroy]
+  get "/myprofile", to: "users#methodlol"
 end
