@@ -1,5 +1,5 @@
 class GitCollaborationsController < ApplicationController
-  before_action :authenticate_user
+  before_action :authenticate_user!, only: [:create, :edit]
   before_action :set_user_id_param, only: [:create, :update]
   before_action :set_git_collaboration, only: [:show, :update, :destroy]
 

@@ -53,3 +53,8 @@ gem "bcrypt", "~> 3.1"
 gem "knock", "~> 2.1"
 
 gem "cloudinary", "~> 1.16"
+
+
+gem 'will_paginate', '~> 3.1.0'
+
+gem 'api-pagination'
