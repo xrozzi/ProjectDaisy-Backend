@@ -10,8 +10,9 @@
 # create a conversation, once conversation created then messages can be sent 
 
 
-User.create(:email => 'admin@projectdaisy.com.au', :password => 'secretpassword')
-User.create(:email => 'admin1@projectdaisy.com.au', :password => 'secretpassword')
+User.create(:email => 'rose@projectdaisy.com.au', :password => 'secretpassword', :firstname => 'Rose', :lastname => 'Hernandez')
+User.create(:email => 'esther@projectdaisy.com.au', :password => 'secretpassword', :firstname => 'Esther', :lastname => 'Csoke')
+User.create(:email => 'nikki@projectdaisy.com.au', :password => 'secretpassword', :firstname => 'Nikki', :lastname => 'Waelkens')
 
 
 
