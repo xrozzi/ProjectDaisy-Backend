@@ -10,12 +10,13 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    puts @user.git_collaborations
     begin
       if @user.image
-        render json: @user.as_json.merge(image: Image.find_by_user_id(@user.id).image)
+        render json: @user.as_json.merge(image: Image.find_by_user_id(@user.id).image, git_collaborations: @user.git_collaborations)
       end
     rescue
-    render json: @user
+    render json: @user.as_json.merge(git_collaborations: @user.git_collaborations)
     
     end
     
@@ -48,6 +49,7 @@ class UsersController < ApplicationController
   end
 
   def methodlol
+<<<<<<< HEAD
     begin       
       if current_user.image  
       render json: current_user.as_json.merge(image: Image.find_by_user_id(current_user.id).image)    
@@ -62,6 +64,16 @@ class UsersController < ApplicationController
     # else
     #   render json: {}, status: :unprocessable_entity
     # end
+=======
+    begin
+      if current_user.image
+        render json: current_user.as_json.merge(image: Image.find_by_user_id(current_user.id).image)
+      end
+    rescue
+    render json: current_user
+    
+    end
+>>>>>>> fdfbc82e6efa8d92b466aa067b3c83981881ce8b
   end
 
   private
