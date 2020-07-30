@@ -65,4 +65,8 @@ class GitCollaborationsController < ApplicationController
     def set_user_id_param
       params[:git_collaboration][:user_id] = current_user.id
     end
+
+    def set_user_git_collab
+      @user_git_collaborations = git_collaboration.find()
+    end
 end

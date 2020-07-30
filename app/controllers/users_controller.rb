@@ -10,12 +10,13 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    puts @user.git_collaborations
     begin
       if @user.image
-        render json: @user.as_json.merge(image: Image.find_by_user_id(@user.id).image)
+        render json: @user.as_json.merge(image: Image.find_by_user_id(@user.id).image, git_collaborations: @user.git_collaborations)
       end
     rescue
-    render json: @user
+    render json: @user.as_json.merge(git_collaborations: @user.git_collaborations)
     
     end
     
