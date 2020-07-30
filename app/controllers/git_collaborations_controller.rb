@@ -42,8 +42,13 @@ class GitCollaborationsController < ApplicationController
 
   #Retrieve all current users git collaborations
   def user_collabs
-    data = current_user.git_collaborations.all
-    render json: data
+    begin
+      if current_user.git_collaborations
+        render json: current_user.git_collaborations.all
+      end
+    rescue
+      render json: current_user
+    end
   end
 
   private
