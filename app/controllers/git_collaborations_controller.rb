@@ -3,14 +3,14 @@ class GitCollaborationsController < ApplicationController
   before_action :set_user_id_param, only: [:create, :update]
   before_action :set_git_collaboration, only: [:show, :update, :destroy]
 
-  # GET /git_collaborations
+  # GET all created user collaborations
   def index
     @git_collaborations = GitCollaboration.all
 
     render json: @git_collaborations
   end
 
-  # GET /git_collaborations/1
+  # GET get a collaboration by its ID
   def show
     render json: @git_collaboration
   end
@@ -66,7 +66,4 @@ class GitCollaborationsController < ApplicationController
       params[:git_collaboration][:user_id] = current_user.id
     end
 
-    def set_user_git_collab
-      @user_git_collaborations = git_collaboration.find()
-    end
 end
