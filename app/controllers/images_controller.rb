@@ -4,8 +4,14 @@ class ImagesController < ApplicationController
 
     # PUT - create an image
     def create 
+        uploaded_image = params[:image]
+      
+       
+     
         upload = Cloudinary::Uploader.upload(params[:image])
-        image = Image.create(image: upload["url"], user_id: current_user["id"])
+        
+        
+        image = Image.create(image: upload["url"], user_id: current_user.id)
         render json: image
     end
 

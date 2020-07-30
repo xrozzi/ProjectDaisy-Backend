@@ -36,10 +36,37 @@ ActiveRecord::Schema.define(version: 2020_07_29_043509) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "forum_id"
+    t.index ["forum_id"], name: "index_comments_on_forum_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "conversations", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "forums", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "discussion"
+    t.index ["category_id"], name: "index_forums_on_category_id"
+    t.index ["user_id"], name: "index_forums_on_user_id"
   end
 
   create_table "git_collaborations", force: :cascade do |t|
@@ -74,6 +101,7 @@ ActiveRecord::Schema.define(version: 2020_07_29_043509) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user"
     t.string "firstname"
     t.string "lastname"
   end
@@ -88,6 +116,10 @@ ActiveRecord::Schema.define(version: 2020_07_29_043509) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "forums"
+  add_foreign_key "comments", "users"
+  add_foreign_key "forums", "categories"
+  add_foreign_key "forums", "users"
   add_foreign_key "git_collaborations", "users"
   add_foreign_key "images", "users"
   add_foreign_key "messages", "conversations"
