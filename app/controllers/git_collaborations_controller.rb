@@ -1,16 +1,18 @@
 class GitCollaborationsController < ApplicationController
   before_action :authenticate_user
+  # set a user before they create or update a collab
   before_action :set_user_id_param, only: [:create, :update]
+  # set a collaboration to be shown, updated or destroyed
   before_action :set_git_collaboration, only: [:show, :update, :destroy]
 
-  # GET /git_collaborations
+  # GET all created user collaborations
   def index
     @git_collaborations = GitCollaboration.all
 
     render json: @git_collaborations
   end
 
-  # GET /git_collaborations/1
+  # GET get a collaboration by its ID
   def show
     render json: @git_collaboration
   end
@@ -19,8 +21,10 @@ class GitCollaborationsController < ApplicationController
   def create
     @git_collaboration = GitCollaboration.new(git_collaboration_params)
 
+    # if git collaboration is saved return the git collaboration
     if @git_collaboration.save
       render json: @git_collaboration, status: :created, location: @git_collaboration
+    #  return error if not created
     else
       render json: @git_collaboration.errors, status: :unprocessable_entity
     end
@@ -62,11 +66,9 @@ class GitCollaborationsController < ApplicationController
       params.require(:git_collaboration).permit(:title, :description, :user_id)
     end
 
+    #set a user by params
     def set_user_id_param
       params[:git_collaboration][:user_id] = current_user.id
     end
 
-    def set_user_git_collab
-      @user_git_collaborations = git_collaboration.find()
-    end
 end

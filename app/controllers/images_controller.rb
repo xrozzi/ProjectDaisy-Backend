@@ -5,19 +5,16 @@ class ImagesController < ApplicationController
     # PUT - create an image
     def create 
         uploaded_image = params[:image]
-      
-       
-     
+        # save image to cloudinary
         upload = Cloudinary::Uploader.upload(params[:image])
-        
-        
+        # save uploaded url in the images table with attached user id
         image = Image.create(image: upload["url"], user_id: current_user.id)
         render json: image
     end
 
     # PATCH - updates an existing image
     def update
-
+        # update image image url
         if @image.update(image: image["url"])
             render json: @image
           else
@@ -33,7 +30,7 @@ class ImagesController < ApplicationController
     end
 
     private
-
+    
         def set_image
             @image = Message.find(params[:id])
         end

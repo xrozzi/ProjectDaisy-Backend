@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :update, :destroy]
   before_action :set_user_id_param, only: [:create, :update]
 
-  # GET /messages
+  # GET all messages from a specific conversation
   def index
     @messages = Conversation.find(params[:conversation_id]).messages
 

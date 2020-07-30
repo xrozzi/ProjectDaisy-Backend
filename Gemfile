@@ -44,12 +44,17 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+#Makes HTTP requests to communicate from back-end to front-end
 gem 'rack-cors'
 
+#Gem for quick and easy data population 
 gem "faker", "~> 2.13"
 
+#Password encryption gem
 gem "bcrypt", "~> 3.1"
 
+# JWT user authentication
 gem "knock", "~> 2.1"
 
+#Cloud storage for user profile images
 gem "cloudinary", "~> 1.16"

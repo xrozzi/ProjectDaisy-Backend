@@ -8,22 +8,22 @@ class UsersController < ApplicationController
     render json: @users
   end
 
-  # GET /users/1
+  # GET user object with attached image and git collaborations
   def show
     puts @user.git_collaborations
     begin
       if @user.image
         render json: @user.as_json.merge(image: Image.find_by_user_id(@user.id).image, git_collaborations: @user.git_collaborations)
       end
+      # if no attached image return user object (if no collabs empty array returned)
     rescue
     render json: @user.as_json.merge(git_collaborations: @user.git_collaborations)
     
     end
-    
-    # render json: @user
+
   end
 
-  # POST /users
+  # POST create a new user
   def create
     @user = User.new(user_params)
 
@@ -48,6 +48,7 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
+  # method for front end to retrieve object of current user
   def methodlol
     begin
       if current_user.image
