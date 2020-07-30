@@ -1,5 +1,6 @@
 class GitCollaborationsController < ApplicationController
   before_action :authenticate_user
+  before_action :set_user_id_param, only: [:create, :update]
   before_action :set_git_collaboration, only: [:show, :update, :destroy]
 
   # GET /git_collaborations
@@ -37,6 +38,12 @@ class GitCollaborationsController < ApplicationController
   # DELETE /git_collaborations/1
   def destroy
     @git_collaboration.destroy
+  end
+
+  #Retrieve all current users git collaborations
+  def user_collabs
+    data = current_user.git_collaborations.all
+    render json: data
   end
 
   private

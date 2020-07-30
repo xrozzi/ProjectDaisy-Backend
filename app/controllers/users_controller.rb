@@ -48,11 +48,13 @@ class UsersController < ApplicationController
   end
 
   def methodlol
-    if current_user
-      render json: current_user
-
-    else
-      render json: {}, status: :unprocessable_entity
+    begin
+      if current_user.image
+        render json: current_user.as_json.merge(image: Image.find_by_user_id(current_user.id).image)
+      end
+    rescue
+    render json: current_user
+    
     end
   end
 
