@@ -15,4 +15,6 @@ Rails.application.routes.draw do
 
   resources :images, only: [:create, :update, :destroy]
   get "/myprofile", to: "users#methodlol"
+
+  get "/usercollabs", to: "git_collaborations#user_collabs"
 end

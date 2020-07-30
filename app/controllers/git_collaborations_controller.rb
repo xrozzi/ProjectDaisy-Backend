@@ -1,5 +1,6 @@
 class GitCollaborationsController < ApplicationController
   before_action :authenticate_user
+  before_action :set_user_id_param, only: [:create, :update]
   before_action :set_git_collaboration, only: [:show, :update, :destroy]
 
   # GET /git_collaborations
@@ -39,6 +40,17 @@ class GitCollaborationsController < ApplicationController
     @git_collaboration.destroy
   end
 
+  #Retrieve all current users git collaborations
+  def user_collabs
+    begin
+      if current_user.git_collaborations
+        render json: current_user.git_collaborations.all
+      end
+    rescue
+      render json: current_user
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_git_collaboration
@@ -52,5 +64,9 @@ class GitCollaborationsController < ApplicationController
 
     def set_user_id_param
       params[:git_collaboration][:user_id] = current_user.id
+    end
+
+    def set_user_git_collab
+      @user_git_collaborations = git_collaboration.find()
     end
 end
