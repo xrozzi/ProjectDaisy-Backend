@@ -1,19 +1,19 @@
 class ConversationsController < ApplicationController
   before_action :set_conversation, only: [:show, :update, :destroy]
 
-  # GET /conversations
+  # GET all current users conversations
   def index
     @conversations = current_user.conversations 
 
     render json: @conversations
   end
 
-  # GET /conversations/1
+  # GET a conversation by an ID
   def show
     render json: @conversation
   end
 
-  # POST /conversations
+  # POST create a new conversation
   def create
     @conversation = Conversation.new({title: conversation_params[:title]})
   

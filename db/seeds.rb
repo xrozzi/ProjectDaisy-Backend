@@ -9,7 +9,7 @@
 # forum type in user email
 # create a conversation, once conversation created then messages can be sent 
 
-
+#Create users to populate the databse
 User.create(:email => 'rose@projectdaisy.com.au', :password => 'secretpassword', :firstname => 'Rose', :lastname => 'Hernandez')
 User.create(:email => 'esther@projectdaisy.com.au', :password => 'secretpassword', :firstname => 'Esther', :lastname => 'Csoke')
 User.create(:email => 'nikki@projectdaisy.com.au', :password => 'secretpassword', :firstname => 'Nikki', :lastname => 'Waelkens')
